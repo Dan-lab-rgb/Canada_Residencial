@@ -10,7 +10,7 @@ window.SITE_CONFIG = Object.freeze({
   longitude: null,
 
   // Contatos
-  telefone: '(16) 3942-6911',
+  telefone: '(16) 99229-6500',
   whatsapp: '',
   email: 'contato@grupocanadasaude.com.br',
 
