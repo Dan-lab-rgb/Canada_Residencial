@@ -5,13 +5,55 @@ const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-/* Fotografias seguem o padrão img/foto1.jpg, img/foto2.jpg, etc. */
+
+/* Fotografias organizadas por seção */
+const colecoesFotos = {
+  sobre: [
+    'img/institucional/recepcao.webp',
+    'img/institucional/sala-acolhimento.webp',
+    'img/ambientes/poltronas-decoradas.webp'
+  ],
+
+  cuidados: [
+    'img/ambientes/cantinho-poltronas.webp',
+    'img/ambientes/sala-convivencia-ampla.webp',
+    'img/ambientes/espaco-refeicoes.webp'
+  ],
+
+  estrutura: [
+    'img/ambientes/terraco.webp',
+    'img/ambientes/area-externa-coberta.webp',
+    'img/ambientes/sala-televisao.webp',
+    'img/ambientes/espaco-refeicoes.webp'
+  ],
+
+  galeria: [
+    'img/institucional/recepcao.webp',
+    'img/ambientes/sala-convivencia-ampla.webp',
+    'img/ambientes/terraco.webp',
+    'img/ambientes/area-externa-coberta.webp',
+    'img/ambientes/espaco-refeicoes.webp',
+    'img/ambientes/sala-televisao.webp',
+    'img/ambientes/cantinho-poltronas.webp',
+    'img/ambientes/ambiente-rosa.webp',
+    'img/ambientes/aparador-azul.webp'
+  ]
+};
+
+/* Seleciona as fotografias da seção correspondente */
 function fotos(el) {
+  const grupo = el.dataset.fotos;
+
+  if (grupo && colecoesFotos[grupo]) {
+    return colecoesFotos[grupo];
+  }
+
   const inicio = Number(el.dataset.inicio) || 1;
   const quantidade = Number(el.dataset.qtd) || 5;
 
   return Array.from({ length: quantidade }, (_, i) => `img/foto${inicio + i}.jpg`);
 }
+
 
 function imagem(src, index) {
   const img = new Image();
@@ -194,27 +236,63 @@ $$('.foto-carousel').forEach(c => {
   reiniciar();
 });
 
+
 /* Galeria com diálogo nativo, foco preservado e navegação por teclado. */
 $$('.galeria').forEach(g => {
   const lista = fotos(g);
+
+  /* Identificação das fotografias */
+  const nomes = [
+    'Recepção',
+    'Sala de convivência',
+    'Terraço',
+    'Área externa coberta',
+    'Espaço de refeições',
+    'Cantinho de descanso',
+    'Vivência natural',
+    'Ambiente decorado',
+    'Detalhes do residencial'
+  ];
+
   const dialog = document.createElement('dialog');
   dialog.className = 'lb';
   dialog.setAttribute('aria-label', 'Galeria de fotos do residencial');
-  dialog.innerHTML = '<button type="button" class="lb-close" aria-label="Fechar galeria">×</button><button type="button" class="lb-prev" aria-label="Foto anterior">‹</button><img alt=""><button type="button" class="lb-next" aria-label="Próxima foto">›</button><p class="lb-counter" aria-live="polite"></p>';
+
+  dialog.innerHTML = `
+    <button type="button" class="lb-close" aria-label="Fechar galeria">×</button>
+    <button type="button" class="lb-prev" aria-label="Foto anterior">‹</button>
+
+    <img alt="">
+
+    <button type="button" class="lb-next" aria-label="Próxima foto">›</button>
+
+    <div class="lb-info">
+      <span class="lb-titulo"></span>
+      <span class="lb-counter" aria-live="polite"></span>
+    </div>
+  `;
+
   document.body.appendChild(dialog);
 
   let atual = 0;
 
   function mostrar(i) {
     atual = (i + lista.length) % lista.length;
-    $('img', dialog).src = lista[atual];
-    $('img', dialog).alt = `Ambientes do residencial — foto ${atual + 1}`;
+
+    const nome = nomes[atual] || `Ambiente ${atual + 1}`;
+    const foto = $('img', dialog);
+
+    foto.src = lista[atual];
+    foto.alt = nome;
+
+    $('.lb-titulo', dialog).textContent = nome;
     $('.lb-counter', dialog).textContent = `${atual + 1} / ${lista.length}`;
   }
 
   $('.lb-close', dialog).onclick = () => dialog.close();
   $('.lb-prev', dialog).onclick = () => mostrar(atual - 1);
   $('.lb-next', dialog).onclick = () => mostrar(atual + 1);
+
 
   dialog.addEventListener('click', e => {
     if (e.target === dialog) dialog.close();
@@ -229,19 +307,62 @@ $$('.galeria').forEach(g => {
 
   dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
 
+  /* Navegação por deslize em dispositivos móveis */
+  const fotoAmpliada = $('img', dialog);
+
+  let toqueInicioX = 0;
+  let toqueInicioY = 0;
+
+  fotoAmpliada.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) return;
+
+    toqueInicioX = e.touches[0].clientX;
+    toqueInicioY = e.touches[0].clientY;
+  }, { passive: true });
+
+  fotoAmpliada.addEventListener('touchend', e => {
+    if (e.changedTouches.length !== 1) return;
+
+    const diferencaX = e.changedTouches[0].clientX - toqueInicioX;
+    const diferencaY = e.changedTouches[0].clientY - toqueInicioY;
+
+    if (Math.abs(diferencaX) > 60 &&
+      Math.abs(diferencaX) > Math.abs(diferencaY) * 1.3) {
+
+      mostrar(atual + (diferencaX < 0 ? 1 : -1));
+    }
+  }, { passive: true });
+
+  /* Construção dos cards da galeria */
   lista.forEach((src, i) => {
     const item = document.createElement('button');
+    const nome = nomes[i] || `Ambiente ${i + 1}`;
+
     item.type = 'button';
     item.className = 'item';
-    item.setAttribute('aria-label', `Ampliar foto ${i + 1}`);
+    item.setAttribute('aria-label', `Ampliar fotografia: ${nome}`);
     item.disabled = true;
 
     placeholder(item);
 
+    /* Fotografia */
     const img = imagem(src, i);
+    img.alt = nome;
+
+    /* Legenda */
+    const legenda = document.createElement('span');
+    legenda.className = 'galeria-legenda';
+    legenda.textContent = nome;
+
+    /* Ícone de ampliação */
+    const zoom = document.createElement('span');
+    zoom.className = 'galeria-zoom';
+    zoom.setAttribute('aria-hidden', 'true');
+    zoom.innerHTML = '<i class="fa-solid fa-expand"></i>';
+
     img.onload = () => {
       item.classList.remove('sem-foto');
-      item.replaceChildren(img);
+      item.replaceChildren(img, legenda, zoom);
       item.disabled = false;
     };
 

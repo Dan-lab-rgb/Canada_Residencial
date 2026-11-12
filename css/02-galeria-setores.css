@@ -1,0 +1,349 @@
+
+/* ===== GALERIA DE AMBIENTES ATUALIZADO ===== */
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 170px;
+  gap: 16px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+/* Fotografias */
+.galeria .item {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+  border: 0;
+  border-radius: 20px;
+  overflow: hidden;
+
+  background: #eee4de;
+  font-family: inherit;
+  cursor: pointer;
+  isolation: isolate;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+}
+
+/* Destaque da fotografia principal */
+.galeria .item:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.galeria img {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+/* Gradiente para facilitar a leitura */
+.galeria .item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: linear-gradient(180deg,
+      transparent 35%,
+      rgba(20, 20, 25, 0.75) 100%);
+
+  pointer-events: none;
+}
+
+/* Identificação do ambiente */
+.galeria-legenda {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  z-index: 2;
+
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: left;
+}
+
+/* Botão visual de ampliação */
+.galeria-zoom {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--v);
+  font-size: 0.85rem;
+
+  transition: transform 0.25s;
+}
+
+/* Interações */
+.galeria .item:hover img,
+.galeria .item:focus-visible img {
+  transform: scale(1.06);
+}
+
+.galeria .item:hover .galeria-zoom {
+  transform: scale(1.1);
+}
+
+.galeria .item:focus-visible {
+  outline: 3px solid var(--v);
+  outline-offset: 3px;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 520px) {
+  .galeria {
+    grid-auto-rows: 140px;
+    gap: 10px;
+  }
+
+  .galeria .item {
+    border-radius: 14px;
+  }
+
+  .galeria-legenda {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    font-size: 0.75rem;
+  }
+
+  .galeria-zoom {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
+  }
+}
+
+/* ===== - EQUIPE E SETORES ATUALIZADO  ===== */
+
+.setores-cabecalho {
+  max-width: 700px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.setores-cabecalho h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.setores-cabecalho p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Cards */
+.setor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+
+  width: 100%;
+  min-height: 245px;
+  height: 100%;
+
+  padding: 26px;
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+
+  background: #fff;
+  color: var(--txt);
+  text-align: left;
+  cursor: pointer;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.setor-card:hover {
+  transform: translateY(-6px);
+  border-color: #e6b5b9;
+  box-shadow: 0 18px 35px rgba(80, 30, 35, 0.1);
+}
+
+.setor-icone {
+  display: grid;
+  place-items: center;
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 17px;
+  background: #fff0f1;
+  color: var(--v);
+  font-size: 1.45rem;
+}
+
+.setor-titulo {
+  color: var(--esc);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.setor-descricao {
+  color: var(--txt);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.setor-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: auto;
+  padding-top: 10px;
+
+  color: var(--v);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.setor-link i {
+  font-size: 0.7rem;
+  transition: transform 0.25s;
+}
+
+.setor-card:hover .setor-link i {
+  transform: translate(3px, -3px);
+}
+
+.setores-acao {
+  margin-top: 38px;
+  text-align: center;
+}
+
+/* Modal */
+.setor-modal .modal-content {
+  border: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.18);
+}
+
+.setor-modal .modal-header {
+  align-items: flex-start;
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--borda);
+  background: var(--creme);
+}
+
+.setor-modal .modal-title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.setor-modal .modal-body {
+  padding: 30px 32px;
+}
+
+.setor-modal .modal-body p {
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.setor-modal .modal-body h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.setor-modal-lista {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+.setor-modal-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.setor-modal-lista li::before {
+  content: '✓';
+  flex-shrink: 0;
+  color: var(--v);
+  font-weight: 900;
+}
+
+.setor-modal .modal-footer {
+  padding: 18px 32px;
+  border-top: 1px solid var(--borda);
+}
+
+.setor-modal-fechar {
+  padding: 11px 25px;
+  border: 0;
+  border-radius: 30px;
+  background: var(--v);
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.setor-modal-fechar:hover {
+  background: var(--v2);
+}
+
+/* Responsividade */
+@media (max-width: 575px) {
+  .setor-card {
+    min-height: 205px;
+  }
+
+  .setores-cabecalho {
+    margin-bottom: 30px;
+  }
+
+  .setor-modal .modal-header,
+  .setor-modal .modal-body,
+  .setor-modal .modal-footer {
+    padding: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .setor-card,
+  .setor-link i {
+    transition: none;
+  }
+
+  .setor-card:hover {
+    transform: none;
+  }
+}
+

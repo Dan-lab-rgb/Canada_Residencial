@@ -1,0 +1,231 @@
+
+/* contato */
+.contato {
+  background: var(--cinza);
+}
+
+.contato-in {
+  display: grid;
+  width: 100%;
+  max-width: none;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  align-items: stretch;
+}
+
+.contato .txt {
+  padding: 40px 24px 40px max(4%, calc((100vw - 1100px)/2));
+}
+
+.contato ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: .85rem;
+}
+
+.contato ul i {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: var(--v);
+  color: #fff;
+  border-radius: 50%;
+  font-size: .7rem;
+}
+
+.mapa {
+  padding: 24px 0;
+}
+
+.mapa iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  border: 1px solid var(--borda);
+}
+
+.orc {
+  background: linear-gradient(160deg, #c8101e, #8f0a14);
+  color: #fff;
+  padding: 32px max(4%, calc((100vw - 1100px)/2)) 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.orc h3 {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.orc p {
+  font-size: .75rem;
+}
+
+.orc input,
+.orc textarea {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .7);
+  color: #fff;
+  padding: 8px;
+  font-family: inherit;
+  font-size: .8rem;
+  border-radius: 3px;
+}
+
+.orc ::placeholder {
+  color: rgba(255, 255, 255, .8);
+}
+
+
+/* ===== V3 - RODAPÉ ===== */
+
+.rodape {
+  position: relative;
+  width: 100%;
+  margin-top: auto;
+  padding: 48px 0 24px;
+
+  background: linear-gradient(135deg, #980c17, #760710);
+  color: white;
+}
+
+/* Organização dos elementos */
+.rod-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* Identidade do residencial */
+.rodape .logo,
+.rodape .logo span,
+.rodape .logo small,
+.rodape .logo i {
+  color: white;
+}
+
+.rodape .logo {
+  text-decoration: none;
+}
+
+.rodape .logo small {
+  opacity: 0.7;
+}
+
+/* Navegação */
+.rodape nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+
+  max-width: 600px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.rodape nav a {
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.rodape nav a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Redes sociais */
+.redes {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rodape .redes a {
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+
+  color: white;
+  font-size: 1.1rem;
+
+  transition: background 0.25s, transform 0.25s;
+}
+
+.rodape .redes a:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-3px);
+}
+
+/* Direitos autorais */
+.copy {
+  max-width: 1200px;
+  margin: 32px auto 0;
+  padding: 20px 16px 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+
+/* Responsividade do rodapé */
+@media (max-width: 900px) {
+  .rodape {
+    padding: 38px 0 22px;
+  }
+
+  .rod-in {
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .rodape nav {
+    gap: 12px 18px;
+  }
+
+  .redes {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .rodape nav {
+    gap: 12px 15px;
+    font-size: 0.78rem;
+  }
+
+  .copy {
+    margin-top: 25px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .rodape nav a,
+  .rodape .redes a {
+    transition: none;
+  }
+
+  .rodape .redes a:hover {
+    transform: none;
+  }
+}
+

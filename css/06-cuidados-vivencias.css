@@ -1,0 +1,300 @@
+
+
+/* ===== V2 - SERVIÇOS ===== */
+
+.cuidado-card {
+  background: white;
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  padding: 32px 25px;
+  transition: 0.3s;
+}
+
+.cuidado-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.07);
+  border-color: #e0b4b7;
+}
+
+.cuidado-card i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 16px;
+  background: #fff0f0;
+  color: var(--v);
+
+  font-size: 1.5rem;
+  margin-bottom: 22px;
+}
+
+.cuidado-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.cuidado-card p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ===== V3 - DESTAQUE DOS CUIDADOS ===== */
+
+.cuidado-card-destaque {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #b30f1b, #800813);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 15px 35px rgba(179, 15, 27, 0.15);
+}
+
+.cuidado-card-destaque::after {
+  content: '';
+  position: absolute;
+  right: -70px;
+  bottom: -100px;
+
+  width: 260px;
+  height: 260px;
+  border: 45px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cuidado-card-destaque i {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.cuidado-card-destaque h3 {
+  color: white;
+  font-size: 1.45rem;
+}
+
+.cuidado-card-destaque p {
+  position: relative;
+  z-index: 1;
+  max-width: 380px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cuidado-card-destaque:hover {
+  border-color: transparent;
+  box-shadow: 0 22px 45px rgba(179, 15, 27, 0.22);
+}
+
+/* ===== V3 - VIVÊNCIAS ===== */
+
+.vivencias-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  grid-template-rows: repeat(2, minmax(180px, auto));
+  gap: 18px;
+}
+
+.vivencia-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+
+  min-width: 0;
+  min-height: 180px;
+  padding: 28px;
+
+  border: 1px solid #f0e6e1;
+  border-radius: 24px;
+  background: #faf7f4;
+
+  text-align: left;
+  overflow: hidden;
+}
+
+/* Efeitos de interação dos cards */
+.vivencia-card {
+  transition: transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.vivencia-card:hover {
+  transform: translateY(-6px);
+  border-color: #e8c3bd;
+  box-shadow: 0 18px 35px rgba(80, 30, 35, 0.1);
+}
+
+.vivencia-card-principal:hover {
+  box-shadow: 0 20px 45px rgba(179, 15, 27, 0.16);
+}
+
+/* Respeita usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .vivencia-card {
+    transition: none;
+  }
+
+  .vivencia-card:hover {
+    transform: none;
+  }
+}
+
+.vivencia-tipo {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: auto;
+  padding: 5px 11px;
+
+  border-radius: 30px;
+  background: rgba(179, 15, 27, 0.075);
+  color: var(--v2);
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.vivencia-card>i,
+.vivencia-card>div>i {
+  position: relative;
+  z-index: 1;
+
+  margin: 18px 0 16px;
+  color: var(--v);
+  font-size: 1.7rem;
+}
+
+.vivencia-card h3 {
+  position: relative;
+  z-index: 1;
+
+  margin-bottom: 8px;
+  font-size: 1.12rem;
+  font-weight: 800;
+}
+
+.vivencia-card p {
+  position: relative;
+  z-index: 1;
+
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Card principal - Artes e Pintura */
+.vivencia-card-principal {
+  grid-row: span 2;
+  justify-content: flex-end;
+
+  padding: 36px;
+  background: linear-gradient(155deg, #f4ded8, #efc9c2);
+}
+
+.vivencia-card-principal>i {
+  font-size: 2.5rem;
+}
+
+.vivencia-card-principal h3 {
+  max-width: 260px;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.vivencia-decor {
+  position: absolute;
+  top: 22%;
+  right: -35px;
+
+  color: rgba(179, 15, 27, 0.095);
+  font-size: 14rem;
+
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+
+/* Card de Musicoterapia */
+.vivencia-card-musica {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  background: #fff9f3;
+}
+
+.vivencia-card-musica .vivencia-tipo {
+  margin-bottom: 0;
+}
+
+.vivencia-musica-decor {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+
+  width: 110px;
+  height: 110px;
+
+  border-radius: 50%;
+  background: #fae8e2;
+  color: var(--v);
+  font-size: 3.6rem;
+}
+
+/* Responsividade das vivências */
+@media (max-width: 900px) {
+  .vivencias-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+  }
+
+  .vivencia-card-principal {
+    grid-row: span 2;
+  }
+
+  .vivencia-card-musica {
+    grid-column: auto;
+  }
+
+  .vivencia-musica-decor {
+    width: 72px;
+    height: 72px;
+    font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .vivencias-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vivencia-card,
+  .vivencia-card-principal {
+    grid-row: auto;
+    min-height: 210px;
+  }
+
+  .vivencia-card-principal {
+    min-height: 285px;
+  }
+
+  .vivencia-card-musica {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .vivencia-musica-decor {
+    width: 65px;
+    height: 65px;
+    font-size: 2rem;
+  }
+}
+

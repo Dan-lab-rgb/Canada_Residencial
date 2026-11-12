@@ -1,0 +1,293 @@
+
+/* ===== V2 - NAVBAR ===== */
+
+.topo {
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid var(--borda);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.topo-in {
+  max-width: 1200px;
+  height: 78px;
+}
+
+.logo {
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo i {
+  color: var(--v);
+  font-size: 2.2rem;
+}
+
+.logo span {
+  color: var(--esc);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.logo small {
+  margin-top: 4px;
+  color: #777;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+#menu {
+  gap: 24px;
+}
+
+#menu a {
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.topo .btn {
+  white-space: nowrap;
+  border-radius: 50px;
+  padding: 11px 20px;
+  text-decoration: none;
+}
+
+@media (max-width: 1100px) {
+  .topo-in {
+    height: 70px;
+  }
+
+  #menu {
+    top: 70px;
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo span {
+    font-size: 0.85rem;
+  }
+
+  .logo i {
+    font-size: 1.7rem;
+  }
+}
+
+/* ===== V2 - HERO ===== */
+
+.hero {
+  position: relative;
+  padding: 105px 0;
+  background: linear-gradient(120deg,
+      #fffaf7 0%,
+      #faf0eb 65%,
+      #ffffff 100%);
+}
+
+.hero::after {
+  opacity: 0.08;
+}
+
+.hero-in {
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.24fr);
+  gap: 34px;
+}
+
+.hero-txt {
+  position: relative;
+  z-index: 2;
+}
+
+.hero .tag {
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(2.3rem, 4vw, 3.8rem);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.hero h1 em {
+  color: var(--v);
+  margin-top: 6px;
+}
+
+.hero p {
+  max-width: 510px;
+  margin: 25px 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero-actions .btn {
+  border-radius: 50px;
+  padding: 14px 26px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.hero-highlights span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.hero-highlights i {
+  color: var(--v);
+  font-size: 1rem;
+}
+
+/* ===== V3 - HERO FOTOGRAFIAS ===== */
+
+.hero-visual {
+  position: relative;
+  min-width: 0;
+  padding-bottom: 25px;
+}
+
+.hero-foto {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 5px solid white;
+  background: #eaded7;
+  box-shadow: 0 25px 60px rgba(80, 30, 35, 0.18);
+}
+
+.hero-foto img {
+  display: block;
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-foto figcaption {
+  position: absolute;
+  right: 16px;
+  bottom: 18px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--esc);
+  font-size: 0.8rem;
+  font-weight: 800;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.hero-foto figcaption i {
+  color: var(--v);
+  margin-right: 5px;
+}
+
+/* Fotografia secundária */
+.hero-preview {
+  position: absolute;
+  left: -22px;
+  bottom: 0;
+  width: 195px;
+  margin: 0;
+  overflow: hidden;
+  border: 6px solid white;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+}
+
+.hero-preview img {
+  display: block;
+  width: 100%;
+  height: 125px;
+  object-fit: cover;
+}
+
+.hero-preview figcaption {
+  padding: 8px 10px;
+  color: var(--esc);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 55px 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 3.2vw, 3rem);
+    line-height: 1.12;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .hero-in {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .hero-foto img {
+    height: 380px;
+  }
+
+  .hero-visual {
+    padding-bottom: 0;
+  }
+
+  .hero-preview {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: min(100%, 280px);
+    margin: 16px auto 0;
+  }
+
+  .hero-preview img {
+    height: 140px;
+  }
+
+  .hero-foto figcaption {
+    top: 12px;
+    right: 12px;
+    bottom: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-foto img {
+    height: 320px;
+  }
+
+  .hero-foto figcaption {
+    right: 10px;
+    top: 10px;
+    bottom: auto;
+    font-size: 0.7rem;
+  }
+}
+
+
+

@@ -1,0 +1,348 @@
+
+:root {
+  --v: #b30f1b;
+  --v2: #8f0a14;
+  --txt: #4a4a52;
+  --esc: #1f2933;
+  --cinza: #faf7f4;
+  --borda: #e6e1e0;
+  --creme: #faf3ed;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: var(--txt);
+  line-height: 1.6;
+  background: #fff;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: auto;
+}
+
+.tag {
+  display: block;
+  color: var(--v);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--esc);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.7rem;
+  margin-bottom: 12px;
+}
+
+.sec {
+  padding: 56px 0;
+}
+
+.cinza {
+  background: var(--cinza);
+}
+
+.centro {
+  text-align: center;
+}
+
+.sub {
+  max-width: 640px;
+  margin: 0 auto 34px;
+  font-size: .92rem;
+}
+
+/* botões */
+.btn,
+.btn-branco {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--v);
+  color: #fff;
+  font-weight: 700;
+  font-size: .9rem;
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 0;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.btn-sm {
+  padding: 9px 18px;
+  font-size: .8rem;
+}
+
+.btn:hover {
+  background: var(--v2);
+  transform: translateY(-2px);
+}
+
+.btn-branco {
+  background: #fff;
+  color: var(--v);
+  width: 100%;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+/* topo */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+}
+
+.topo-in {
+  width: min(1200px, 94%);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 66px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--v);
+  font-weight: 800;
+}
+
+.logo i {
+  font-size: 2rem;
+}
+
+.logo span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  font-size: .95rem;
+}
+
+.logo small {
+  font-weight: 600;
+  font-size: .8rem;
+}
+
+#menu {
+  display: flex;
+  gap: 20px;
+}
+
+#menu a {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--esc);
+  padding: 22px 0;
+  border-bottom: 2px solid transparent;
+}
+
+#menu a:hover,
+#menu a.ativo {
+  color: var(--v);
+  border-color: var(--v);
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  font-size: 1.5rem;
+  color: var(--v);
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* hero */
+.hero {
+  background: linear-gradient(120deg, #eee 0%, #f5f2f1 60%, #fff 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -8%;
+  top: 0;
+  width: 32%;
+  height: 100%;
+  background: linear-gradient(160deg, #c8101e, #8f0a14);
+  border-radius: 60% 0 0 0;
+  z-index: 0;
+}
+
+.hero-in {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  color: var(--esc);
+}
+
+.hero h1 em {
+  display: block;
+  font-style: normal;
+  color: var(--v);
+}
+
+.hero p {
+  margin: 14px 0 22px;
+  max-width: 380px;
+}
+
+/* duas colunas */
+.duas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.duas.inv {
+  grid-template-columns: 1.1fr 1fr;
+}
+
+.txt p {
+  font-size: .92rem;
+  margin-bottom: 18px;
+}
+
+/* carrossel */
+.foto-carousel {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #fff;
+  border: 1px solid var(--borda);
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .08);
+}
+
+.foto-carousel .track {
+  display: flex;
+  height: 100%;
+  transition: transform .5s ease;
+}
+
+.foto-carousel .slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  letter-spacing: .15em;
+  font-weight: 700;
+  font-size: .85rem;
+  background: #fff;
+}
+
+.foto-carousel .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.foto-carousel .seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, .9);
+  color: var(--v);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+  opacity: 0;
+  transition: .25s;
+  z-index: 2;
+}
+
+.foto-carousel:hover .seta {
+  opacity: 1;
+}
+
+.foto-carousel .prev {
+  left: 10px;
+}
+
+.foto-carousel .next {
+  right: 10px;
+}
+
+.foto-carousel .dots {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  z-index: 2;
+}
+
+.foto-carousel .dots button {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, .7);
+  box-shadow: 0 0 3px rgba(0, 0, 0, .4);
+  cursor: pointer;
+}
+
+.foto-carousel .dots button.on {
+  background: var(--v);
+}
+

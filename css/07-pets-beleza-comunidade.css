@@ -1,0 +1,592 @@
+
+/* ===== V3 - VISITAS COM PETS ===== */
+
+.pet-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--creme);
+}
+
+.pet-section h2 {
+  margin-bottom: 24px;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 800;
+}
+
+.pet-section p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.pet-section .btn {
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+/* Composição principal */
+.pet-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 380px;
+  padding: 44px;
+
+  border: 1px solid #eccbc4;
+  border-radius: 32px;
+
+  background:
+    radial-gradient(circle at 30% 15%, #fff9f5 0%, transparent 45%),
+    linear-gradient(135deg, #efd0ca, #e8bfb9);
+
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(80, 30, 35, 0.09);
+}
+
+/* Círculos decorativos */
+.pet-visual::before,
+.pet-visual::after {
+  content: '';
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  border: 1px solid rgba(179, 15, 27, 0.16);
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.pet-visual::before {
+  top: -135px;
+  right: -95px;
+}
+
+.pet-visual::after {
+  bottom: -170px;
+  left: -85px;
+}
+
+/* Selo superior */
+.pet-visual-selo {
+  position: absolute;
+  top: 24px;
+  left: 26px;
+
+  padding: 8px 13px;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--v2);
+
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+/* Patinha principal */
+.pet-visual-circulo {
+  display: grid;
+  place-items: center;
+
+  width: 205px;
+  height: 205px;
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.39);
+  color: #bc3c46;
+
+  font-size: 6rem;
+  box-shadow: inset 0 0 0 17px rgba(255, 255, 255, 0.18);
+}
+
+/* Coração decorativo */
+.pet-visual-coracao {
+  position: absolute;
+  top: 26%;
+  right: 20%;
+
+  display: grid;
+  place-items: center;
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 18px;
+  background: white;
+  color: var(--v);
+
+  font-size: 1.5rem;
+
+  transform: rotate(13deg);
+  box-shadow: 0 14px 28px rgba(80, 30, 35, 0.12);
+}
+
+/* Mensagem inferior */
+.pet-visual-mensagem {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  left: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 13px 16px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--esc);
+
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.pet-visual-mensagem i {
+  color: var(--v);
+  font-size: 1.2rem;
+}
+
+/* Responsividade da seção Pets */
+@media (max-width: 768px) {
+  .pet-visual {
+    min-height: 320px;
+    padding: 25px;
+  }
+
+  .pet-visual-circulo {
+    width: 165px;
+    height: 165px;
+    font-size: 4.5rem;
+  }
+
+  .pet-visual-coracao {
+    right: 15%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pet-visual-selo {
+    top: 16px;
+    left: 16px;
+    font-size: 0.7rem;
+  }
+
+  .pet-visual-mensagem {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    padding: 12px;
+    font-size: 0.78rem;
+  }
+}
+
+
+/* ===== V3 - BELEZA E AUTOESTIMA ===== */
+
+.beleza-painel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+
+  padding: 18px;
+  border: 1px solid #eee7e3;
+  border-radius: 26px;
+  background: #faf7f4;
+}
+
+/* Cards principais */
+.beleza-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-height: 225px;
+  padding: 23px;
+
+  border: 1px solid #eee2de;
+  border-radius: 20px;
+  background: #fff;
+  overflow: hidden;
+
+  transition: transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.beleza-item-cabelos {
+  background: #fff;
+}
+
+.beleza-item-manicure {
+  background: #f8eae6;
+}
+
+/* Numeração dos serviços */
+.beleza-item-numero {
+  align-self: flex-end;
+  margin-bottom: auto;
+
+  color: #b8a6a1;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+/* Ícones */
+.beleza-item i {
+  display: grid;
+  place-items: center;
+
+  width: 52px;
+  height: 52px;
+  margin-bottom: 15px;
+
+  border-radius: 16px;
+  background: #fff0ed;
+  color: var(--v);
+  font-size: 1.35rem;
+}
+
+/* Textos */
+.beleza-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+  font-weight: 800;
+}
+
+.beleza-item p {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+/* Mensagem inferior */
+.beleza-mensagem {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 17px 20px;
+  border-radius: 16px;
+  background: #fff;
+
+  color: var(--esc);
+  font-size: 0.93rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.beleza-mensagem i {
+  color: var(--v);
+  font-size: 1.2rem;
+}
+
+/* Efeito de interação */
+.beleza-item:hover {
+  transform: translateY(-5px);
+  border-color: #e8c3bd;
+  box-shadow: 0 14px 28px rgba(80, 30, 35, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beleza-item {
+    transition: none;
+  }
+
+  .beleza-item:hover {
+    transform: none;
+  }
+}
+
+
+/* Responsividade de Beleza */
+@media (max-width: 600px) {
+  .beleza-painel {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .beleza-item {
+    min-height: 180px;
+  }
+
+  .beleza-mensagem {
+    padding: 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== V3 - NOSSA COMUNIDADE ===== */
+
+.numeros {
+  position: relative;
+  padding: 95px 0;
+  overflow: hidden;
+
+  background: linear-gradient(135deg,
+      #b30f1b 0%,
+      #980c17 60%,
+      #780711 100%);
+}
+
+/* Elemento decorativo do fundo */
+.numeros::before {
+  content: '';
+  position: absolute;
+  top: -230px;
+  left: -170px;
+
+  width: 500px;
+  height: 500px;
+
+  border: 70px solid rgba(255, 255, 255, 0.035);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.numeros .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Organização principal */
+.comunidade-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 70px;
+}
+
+/* Conteúdo da esquerda */
+.comunidade-conteudo .tag {
+  margin-bottom: 18px;
+  color: #ffd6d8;
+}
+
+.comunidade-conteudo .tag i {
+  margin-right: 6px;
+}
+
+.comunidade-conteudo h2 {
+  max-width: 560px;
+  margin-bottom: 24px;
+
+  color: white;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.comunidade-descricao {
+  max-width: 520px;
+  margin-bottom: 30px;
+
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* Valores do residencial */
+.comunidade-valores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.comunidade-valores span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 11px 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.comunidade-valores i {
+  color: #ffd5d6;
+}
+
+/* Painel dos moradores */
+.comunidade-destaque {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 360px;
+  padding: 40px 30px;
+
+  border-radius: 30px;
+  background: #fff9f5;
+
+  text-align: center;
+  overflow: hidden;
+
+  box-shadow: 0 25px 60px rgba(55, 0, 5, 0.18);
+}
+
+/* Círculo decorativo do painel */
+.comunidade-destaque::before {
+  content: '';
+  position: absolute;
+  top: -110px;
+  right: -110px;
+
+  width: 260px;
+  height: 260px;
+
+  border: 40px solid rgba(179, 15, 27, 0.045);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Ícone superior */
+.comunidade-icone {
+  display: grid;
+  place-items: center;
+
+  width: 62px;
+  height: 62px;
+  margin-bottom: 20px;
+
+  border-radius: 20px;
+  background: #fbe7e5;
+  color: var(--v);
+
+  font-size: 1.7rem;
+}
+
+.comunidade-label {
+  color: #8c6668;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Número principal */
+.comunidade-numero {
+  margin: 8px 0 0;
+
+  color: var(--v);
+  font-size: clamp(5rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.06em;
+}
+
+.comunidade-destaque p {
+  margin: 12px 0 25px;
+
+  color: var(--esc);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+/* Mensagem inferior do painel */
+.comunidade-detalhe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  padding-top: 20px;
+
+  border-top: 1px solid #eadfdc;
+
+  color: #796466;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.comunidade-detalhe i {
+  color: var(--v);
+}
+
+/* Responsividade da comunidade */
+@media (max-width: 900px) {
+  .numeros {
+    padding: 70px 0;
+  }
+
+  .comunidade-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .comunidade-conteudo {
+    text-align: center;
+  }
+
+  .comunidade-conteudo h2,
+  .comunidade-descricao {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .comunidade-valores {
+    justify-content: center;
+  }
+
+  .comunidade-destaque {
+    width: min(100%, 480px);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .numeros {
+    padding: 55px 0;
+  }
+
+  .comunidade-conteudo h2 {
+    font-size: 2rem;
+  }
+
+  .comunidade-valores {
+    gap: 8px;
+  }
+
+  .comunidade-valores span {
+    padding: 9px 12px;
+    font-size: 0.76rem;
+  }
+
+  .comunidade-destaque {
+    min-height: 320px;
+    padding: 30px 20px;
+  }
+
+  .comunidade-numero {
+    font-size: 5rem;
+  }
+
+  .comunidade-detalhe {
+    font-size: 0.75rem;
+  }
+}
+

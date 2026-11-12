@@ -1,0 +1,346 @@
+
+/* ===== V2 - EVENTOS ===== */
+
+.agenda-box,
+.proximos-box {
+  background: white;
+  border: 1px solid var(--borda);
+  border-radius: 22px;
+  padding: 28px;
+  height: 100%;
+}
+
+.agenda-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.agenda-topo h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: none;
+  text-align: center;
+  margin: 0;
+}
+
+.agenda-topo button {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  background: white;
+  color: var(--v);
+  cursor: pointer;
+}
+
+.agenda-topo button:hover {
+  background: var(--creme);
+}
+
+.grade-calendario {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.dia-semana {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding-bottom: 10px;
+}
+
+.dia-calendario {
+  display: grid;
+  place-items: center;
+  min-height: 43px;
+  border: 0;
+  border-radius: 10px;
+  background: #faf7f4;
+  font-size: 0.9rem;
+  color: var(--esc);
+}
+
+button.dia-calendario {
+  cursor: pointer;
+}
+
+.dia-calendario.tem-evento {
+  background: var(--v);
+  color: white;
+  font-weight: 800;
+}
+
+.dia-calendario.tem-evento:hover {
+  background: var(--v2);
+}
+
+.agenda-detalhes {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: var(--txt);
+}
+
+.agenda-evento {
+  padding: 14px 0;
+  border-top: 1px solid var(--borda);
+}
+
+.agenda-evento p {
+  margin: 5px 0 0;
+}
+
+.proximos-box h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+.proximos-box h3 i {
+  color: var(--v);
+  margin-right: 8px;
+}
+
+.proximo-evento {
+  padding: 18px;
+  background: var(--cinza);
+  border-left: 4px solid var(--v);
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.proximo-evento strong {
+  color: var(--v);
+}
+
+.proximo-evento h4 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin: 8px 0;
+}
+
+.proximo-evento p,
+.sem-eventos {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+
+  .agenda-box,
+  .proximos-box {
+    padding: 18px;
+  }
+
+  .grade-calendario {
+    gap: 4px;
+  }
+
+  .dia-calendario {
+    min-height: 36px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ===== V3 - CALENDÁRIO E EVENTOS ===== */
+
+/* Identificação superior */
+.agenda-selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 20px;
+  padding: 8px 13px;
+
+  border-radius: 30px;
+  background: #fff0ee;
+  color: var(--v);
+
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+/* Dia atual */
+.dia-calendario.hoje {
+  background: #fff0ee;
+  color: var(--v);
+  border: 2px solid var(--v);
+  font-weight: 900;
+}
+
+.dia-calendario.tem-evento.hoje {
+  background: var(--v);
+  color: white;
+  box-shadow: 0 0 0 3px #f0c9cc;
+}
+
+/* Legenda inferior */
+.agenda-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  margin-top: 24px;
+  padding-top: 18px;
+
+  border-top: 1px solid var(--borda);
+}
+
+.agenda-legenda span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 0.78rem;
+  color: var(--txt);
+}
+
+.agenda-marcador {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+}
+
+.agenda-marcador-hoje {
+  border: 2px solid var(--v);
+  background: #fff0ee;
+}
+
+.agenda-marcador-evento {
+  background: var(--v);
+}
+
+/* Painel de próximos eventos */
+.proximos-box {
+  display: flex;
+  flex-direction: column;
+}
+
+#proximos-eventos {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Apresentação quando não existem eventos */
+.agenda-vazia {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 16px;
+
+  min-height: 290px;
+  padding: 32px 24px;
+
+  border-radius: 20px;
+  background: linear-gradient(145deg, #fff8f5, #f5dfda);
+
+  text-align: center;
+  overflow: hidden;
+}
+
+.agenda-vazia::after {
+  content: '';
+  position: absolute;
+  right: -95px;
+  bottom: -125px;
+
+  width: 240px;
+  height: 240px;
+
+  border: 35px solid rgba(179, 15, 27, 0.045);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.agenda-vazia>i {
+  display: grid;
+  place-items: center;
+
+  width: 76px;
+  height: 76px;
+
+  border-radius: 22px;
+  background: white;
+  color: var(--v);
+
+  font-size: 2rem;
+  box-shadow: 0 12px 30px rgba(80, 30, 35, 0.07);
+}
+
+.agenda-vazia h4 {
+  margin: 0;
+  color: var(--esc);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.agenda-vazia p {
+  max-width: 270px;
+  margin: 0;
+
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* Link do painel */
+.agenda-vazia-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 8px;
+  padding: 11px 20px;
+
+  border-radius: 30px;
+  background: var(--v);
+  color: white;
+
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+
+  transition: background 0.25s, transform 0.25s;
+}
+
+.agenda-vazia-link:hover {
+  background: var(--v2);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .agenda-selo {
+    font-size: 0.7rem;
+  }
+
+  .agenda-vazia {
+    min-height: 240px;
+    padding: 25px 18px;
+  }
+
+  .agenda-legenda {
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agenda-vazia-link {
+    transition: none;
+  }
+
+  .agenda-vazia-link:hover {
+    transform: none;
+  }
+}
+

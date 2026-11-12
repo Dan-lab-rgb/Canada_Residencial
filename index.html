@@ -15,7 +15,16 @@
   <!-- Bootstrap 5.3.8 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Estilos da V3: manter a ordem das folhas para preservar a aparência -->
+  <link rel="stylesheet" href="css/01-base.css">
+  <link rel="stylesheet" href="css/02-galeria-setores.css">
+  <link rel="stylesheet" href="css/03-contato-rodape.css">
+  <link rel="stylesheet" href="css/04-refinamentos.css">
+  <link rel="stylesheet" href="css/05-navbar-hero.css">
+  <link rel="stylesheet" href="css/06-cuidados-vivencias.css">
+  <link rel="stylesheet" href="css/07-pets-beleza-comunidade.css">
+  <link rel="stylesheet" href="css/08-eventos.css">
+  <link rel="stylesheet" href="css/09-acabamentos-contato.css">
 </head>
 
 <body>
@@ -71,8 +80,8 @@
         </span>
 
         <h1>
-          Cuidado, conforto e
-          <em>acolhimento em cada momento.</em>
+          Um lugar de cuidado, conforto
+          <em>e acolhimento</em>
         </h1>
 
         <p>
@@ -112,8 +121,30 @@
         </div>
       </div>
 
-      <!-- Espaço reservado para fotografias -->
-      <div class="foto-carousel" data-inicio="1" data-qtd="5" data-auto="5000">
+      <!-- Fotografia principal do residencial -->
+
+      <!-- Fotografias principais do residencial -->
+      <div class="hero-visual">
+
+        <figure class="hero-foto">
+          <img src="img/foto1.jpg" alt="Fachada do Canadá Saúde Residencial Sênior em Sertãozinho" fetchpriority="high"
+            decoding="async">
+
+          <figcaption>
+            <i class="fa-solid fa-location-dot"></i>
+            Nossa unidade em Sertãozinho
+          </figcaption>
+        </figure>
+
+        <!-- Destaque do ambiente interno -->
+        <figure class="hero-preview">
+          <img src="img/foto2.jpg" alt="Recepção do Canadá Residencial Sênior" loading="lazy" decoding="async">
+
+          <figcaption>
+            Ambiente acolhedor
+          </figcaption>
+        </figure>
+
       </div>
 
     </div>
@@ -121,7 +152,7 @@
 
   <section id="sobre" class="sec">
     <div class="container duas">
-      <div class="foto-carousel" data-inicio="1" data-qtd="5"></div>
+      <div class="foto-carousel" data-fotos="sobre"></div>
 
       <div class="txt">
 
@@ -174,8 +205,8 @@
       <div class="row g-4">
 
         <!-- Enfermagem -->
-        <div class="col-12 col-md-6 col-lg-4">
-          <article class="cuidado-card h-100">
+        <div class="col-12 col-md-6 col-lg-6">
+          <article class="cuidado-card cuidado-card-destaque h-100">
             <i class="fa-solid fa-user-nurse"></i>
             <h3>Enfermagem 24 horas</h3>
             <p>
@@ -187,7 +218,7 @@
         </div>
 
         <!-- Fisioterapia -->
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-3">
           <article class="cuidado-card h-100">
             <i class="fa-solid fa-person-walking"></i>
             <h3>Fisioterapia</h3>
@@ -199,7 +230,7 @@
         </div>
 
         <!-- Nutrição -->
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-3">
           <article class="cuidado-card h-100">
             <i class="fa-solid fa-utensils"></i>
             <h3>Nutrição</h3>
@@ -275,7 +306,7 @@
         </a>
       </div>
 
-      <div class="foto-carousel" data-inicio="1" data-qtd="5"></div>
+      <div class="foto-carousel" data-fotos="cuidados"></div>
     </div>
   </section>
 
@@ -283,7 +314,7 @@
   <section id="estrutura" class="sec cinza">
     <div class="container duas inv">
 
-      <div class="foto-carousel" data-inicio="1" data-qtd="5"></div>
+      <div class="foto-carousel" data-fotos="estrutura"></div>
 
       <div class="txt">
         <span class="tag">Estrutura</span>
@@ -306,7 +337,7 @@
   </section>
 
   <!-- Socialização e bem-estar -->
-  <section id="rotina" class="sec">
+   <section id="rotina" class="sec">
     <div class="container">
 
       <div class="text-center mb-5">
@@ -320,431 +351,756 @@
         </p>
       </div>
 
-      <div class="row g-4">
+      <!-- Vivências com diferentes destaques visuais -->
+      <div class="vivencias-grid">
 
-        <div class="col-12 col-sm-6 col-lg-3">
-          <div class="vivencia-card">
+        <!-- Artes e Pintura -->
+        <article class="vivencia-card vivencia-card-principal">
+          <span class="vivencia-tipo">Criatividade</span>
+
+          <i class="fa-solid fa-palette" aria-hidden="true"></i>
+
+          <h3>Artes e Pintura</h3>
+          <p>Criatividade, expressão e lazer.</p>
+
+          <span class="vivencia-decor" aria-hidden="true">
             <i class="fa-solid fa-palette"></i>
-            <h3>Artes e Pintura</h3>
-            <p>Criatividade, expressão e lazer.</p>
-          </div>
-        </div>
+          </span>
+        </article>
 
-        <div class="col-12 col-sm-6 col-lg-3">
-          <div class="vivencia-card">
-            <i class="fa-solid fa-dumbbell"></i>
-            <h3>Academia Especializada</h3>
-            <p>Movimento e atenção ao bem-estar.</p>
-          </div>
-        </div>
+        <!-- Academia Especializada -->
+        <article class="vivencia-card">
+          <span class="vivencia-tipo">Movimento</span>
 
-        <div class="col-12 col-sm-6 col-lg-3">
-          <div class="vivencia-card">
-            <i class="fa-solid fa-brain"></i>
-            <h3>Estímulo Cognitivo</h3>
-            <p>Atividades e exercícios de memória.</p>
-          </div>
-        </div>
+          <i class="fa-solid fa-dumbbell" aria-hidden="true"></i>
 
-        <div class="col-12 col-sm-6 col-lg-3">
-          <div class="vivencia-card">
-            <i class="fa-solid fa-music"></i>
+          <h3>Academia Especializada</h3>
+          <p>Movimento e atenção ao bem-estar.</p>
+        </article>
+
+        <!-- Estímulo Cognitivo -->
+        <article class="vivencia-card">
+          <span class="vivencia-tipo">Memória</span>
+
+          <i class="fa-solid fa-brain" aria-hidden="true"></i>
+
+          <h3>Estímulo Cognitivo</h3>
+          <p>Atividades e exercícios de memória.</p>
+        </article>
+
+        <!-- Musicoterapia -->
+        <article class="vivencia-card vivencia-card-musica">
+          <div>
+            <span class="vivencia-tipo">Convivência</span>
+
+            <i class="fa-solid fa-music" aria-hidden="true"></i>
+
             <h3>Musicoterapia</h3>
             <p>Experiências musicais e socialização.</p>
           </div>
-        </div>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- Visitas com animais -->
-  <section id="pet" class="sec pet-section">
-    <div class="container">
-
-      <div class="row align-items-center g-5">
-
-        <div class="col-12 col-lg-6">
-
-          <div class="pet-foto">
-            <i class="fa-solid fa-paw"></i>
-            <p>Amor que acompanha a família</p>
-          </div>
-
-        </div>
-
-        <div class="col-12 col-lg-6">
-
-          <span class="tag">
-            <i class="fa-solid fa-paw"></i>
-            Visitas com pets
+          <span class="vivencia-musica-decor" aria-hidden="true">
+            <i class="fa-solid fa-music"></i>
           </span>
-
-          <h2>
-            Porque o amor também
-            tem quatro patas!
-          </h2>
-
-          <p>
-            Os animais de estimação fazem parte
-            da família e podem proporcionar
-            momentos especiais de carinho
-            e companhia.
-          </p>
-
-          <p>
-            No Canadá Residencial Sênior,
-            os pets são bem-vindos para
-            acompanhar seus familiares
-            durante as visitas.
-          </p>
-
-          <a href="#contato" class="btn">
-            Saiba mais sobre as visitas
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
-
-        </div>
+        </article>
 
       </div>
     </div>
-  </section>
+    </section>
 
-  <!-- Beleza e autoestima -->
-  <section id="beleza" class="sec">
-    <div class="container">
+    <!-- Visitas com animais -->
+    <section id="pet" class="sec pet-section">
+      <div class="container">
 
-      <div class="row align-items-center g-5">
+        <div class="row align-items-center g-5">
 
-        <div class="col-12 col-lg-6">
+          <div class="col-12 col-lg-6">
 
-          <span class="tag">Cuidado e autoestima</span>
+            <!-- Composição ilustrativa das visitas com pets -->
+            <div class="pet-visual" aria-hidden="true">
 
-          <h2>
-            Pequenos cuidados,
-            grandes momentos
-          </h2>
+              <!-- Selo superior -->
+              <span class="pet-visual-selo">
+                Pets bem-vindos nas visitas
+              </span>
 
-          <p>
-            O bem-estar também está nos
-            momentos dedicados a si mesmo.
-            O residencial conta com serviços
-            de salão de beleza, incluindo
-            cuidados com os cabelos e manicure.
-          </p>
+              <!-- Patinha central -->
+              <div class="pet-visual-circulo">
+                <i class="fa-solid fa-paw"></i>
+              </div>
 
-          <p>
-            Uma forma de valorizar a autoestima
-            e proporcionar experiências
-            agradáveis no dia a dia.
-          </p>
+              <!-- Coração decorativo -->
+              <div class="pet-visual-coracao">
+                <i class="fa-solid fa-heart"></i>
+              </div>
 
-          <a href="#contato" class="btn btn-sm">
-            Consulte os serviços
-            <i class="fa-solid fa-arrow-right"></i>
-          </a>
+              <!-- Mensagem inferior -->
+              <div class="pet-visual-mensagem">
+                <i class="fa-solid fa-house-heart"></i>
+                <span>O carinho também faz parte da visita</span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-12 col-lg-6">
+
+            <span class="tag">
+              <i class="fa-solid fa-paw"></i>
+              Visitas com pets
+            </span>
+
+            <h2>
+              Porque o amor também
+              tem quatro patas!
+            </h2>
+
+            <p>
+              Os animais de estimação fazem parte
+              da família e podem proporcionar
+              momentos especiais de carinho
+              e companhia.
+            </p>
+
+            <p>
+              No Canadá Residencial Sênior,
+              os pets são bem-vindos para
+              acompanhar seus familiares
+              durante as visitas.
+            </p>
+
+            <a href="#contato" class="btn">
+              Saiba mais sobre as visitas
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+          </div>
 
         </div>
+      </div>
+    </section>
 
-        <div class="col-12 col-lg-6">
+    <!-- Beleza e autoestima -->
+    <section id="beleza" class="sec">
+      <div class="container">
 
-          <div class="beleza-painel">
+        <div class="row align-items-center g-5">
 
-            <div class="beleza-item">
-              <i class="fa-solid fa-scissors"></i>
-              <span>Cuidados com os cabelos</span>
-            </div>
+          <div class="col-12 col-lg-6">
 
-            <div class="beleza-item">
-              <i class="fa-solid fa-hand-sparkles"></i>
-              <span>Manicure</span>
-            </div>
+            <span class="tag">Cuidado e autoestima</span>
 
-            <div class="beleza-item">
-              <i class="fa-solid fa-heart"></i>
-              <span>Bem-estar e autoestima</span>
+            <h2>
+              Pequenos cuidados,
+              grandes momentos
+            </h2>
+
+            <p>
+              O bem-estar também está nos
+              momentos dedicados a si mesmo.
+              O residencial conta com serviços
+              de salão de beleza, incluindo
+              cuidados com os cabelos e manicure.
+            </p>
+
+            <p>
+              Uma forma de valorizar a autoestima
+              e proporcionar experiências
+              agradáveis no dia a dia.
+            </p>
+
+            <a href="#contato" class="btn btn-sm">
+              Consulte os serviços
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+          </div>
+
+          <div class="col-12 col-lg-6">
+
+
+            <!-- Destaques dos serviços de beleza -->
+            <div class="beleza-painel">
+
+              <!-- Cuidados com os cabelos -->
+              <div class="beleza-item beleza-item-cabelos">
+                <span class="beleza-item-numero">01</span>
+
+                <i class="fa-solid fa-scissors" aria-hidden="true"></i>
+
+                <h3>Cuidados com os cabelos</h3>
+                <p>Momentos dedicados ao cuidado pessoal.</p>
+              </div>
+
+              <!-- Manicure -->
+              <div class="beleza-item beleza-item-manicure">
+                <span class="beleza-item-numero">02</span>
+
+                <i class="fa-solid fa-hand-sparkles" aria-hidden="true"></i>
+
+                <h3>Manicure</h3>
+                <p>Um espaço para valorizar a autoestima.</p>
+              </div>
+
+              <!-- Mensagem complementar -->
+              <div class="beleza-mensagem">
+                <i class="fa-solid fa-heart" aria-hidden="true"></i>
+                <span>Pequenos gestos, grandes cuidados</span>
+              </div>
+
             </div>
 
           </div>
 
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Galeria de ambientes -->
-  <section id="galeria" class="sec cinza">
-    <div class="container centro">
-      <span class="tag">Nossos ambientes</span>
+    <!-- Galeria de ambientes -->
+    <section id="galeria" class="sec cinza">
+      <div class="container centro">
+        <span class="tag">Nossos ambientes</span>
 
-      <h2>Conheça o Canadá Residencial</h2>
-
-      <p class="sub">
-        Espaços planejados para oferecer conforto,
-        segurança e momentos de convivência.
-      </p>
-
-      <div class="galeria" data-inicio="1" data-qtd="5"></div>
-    </div>
-  </section>
-
-  <!-- Equipe do residencial -->
-  <section id="equipe" class="sec">
-    <div class="container duas">
-
-      <div class="txt">
-        <span class="tag">Equipe</span>
-
-        <h2>Uma equipe multidisciplinar e dedicada</h2>
-
-        <p>
-          Contamos com profissionais qualificados e comprometidos
-          em oferecer o melhor atendimento, sempre com respeito,
-          empatia e carinho.
-        </p>
-
-        <a href="#contato" class="btn btn-sm">
-          Converse com nossa equipe
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
-
-      <div class="equipe">
-        <div><i class="fa-regular fa-user"></i>Nutricionista</div>
-        <div><i class="fa-regular fa-user"></i>Cozinha</div>
-        <div><i class="fa-regular fa-user"></i>Cuidadoras</div>
-        <div><i class="fa-regular fa-user"></i>Enfermeiros</div>
-        <div><i class="fa-regular fa-user"></i>Administração</div>
-        <div><i class="fa-regular fa-user"></i>Fisioterapia</div>
-        <div><i class="fa-regular fa-user"></i>Lavanderia</div>
-        <div><i class="fa-regular fa-user"></i>Limpeza</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Eventos e programação -->
-  <section id="eventos" class="sec cinza">
-    <div class="container">
-
-      <div class="text-center mb-5">
-        <span class="tag">Nossa programação</span>
-
-        <h2>Momentos especiais para compartilhar</h2>
+        <h2>Conheça o Canadá Residencial</h2>
 
         <p class="sub">
-          Eventos mensais, comemorações, comidas típicas
-          e atividades que tornam a convivência
-          ainda mais especial.
+          Espaços planejados para oferecer conforto,
+          segurança e momentos de convivência.
         </p>
+
+        <div class="galeria" data-fotos="galeria"></div>
+
       </div>
+      </section>
 
-      <div class="row g-4">
+      <!-- Equipe e setores do residencial -->
+      <section id="equipe" class="sec">
+        <div class="container">
 
-        <!-- Calendário -->
-        <div class="col-12 col-lg-7">
-          <div class="agenda-box">
+          <div class="setores-cabecalho">
+            <span class="tag">Nossa equipe</span>
 
-            <div class="agenda-topo">
-              <button type="button" id="mes-anterior" aria-label="Mês anterior">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
+            <h2>Cuidado em cada detalhe</h2>
 
-              <h3 id="mes-atual" aria-live="polite"></h3>
+            <p>
+              Conheça os setores que contribuem para
+              o acolhimento, o conforto e o bem-estar
+              dos residentes do Canadá.
+            </p>
+          </div>
 
-              <button type="button" id="mes-proximo" aria-label="Próximo mês">
-                <i class="fa-solid fa-chevron-right"></i>
+          <!-- Cards dos setores -->
+          <div class="row g-3 g-lg-4">
+
+            <!-- Nutrição -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <button class="setor-card" type="button" data-setor="nutricao" data-bs-toggle="modal"
+                data-bs-target="#modalSetor">
+
+                <span class="setor-icone">
+                  <i class="fa-solid fa-apple-whole"></i>
+                </span>
+
+                <span class="setor-titulo">Nutrição</span>
+                <span class="setor-descricao">
+                  Atenção às necessidades alimentares.
+                </span>
+
+                <span class="setor-link">
+                  Conhecer setor
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
               </button>
             </div>
 
-            <div id="grade-calendario" class="grade-calendario">
+            <!-- Cozinha -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <button class="setor-card" type="button" data-setor="cozinha" data-bs-toggle="modal"
+                data-bs-target="#modalSetor">
+
+                <span class="setor-icone">
+                  <i class="fa-solid fa-kitchen-set"></i>
+                </span>
+
+                <span class="setor-titulo">Cozinha</span>
+                <span class="setor-descricao">
+                  Preparo e organização das refeições.
+                </span>
+
+                <span class="setor-link">
+                  Conhecer setor
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </button>
             </div>
 
-            <div id="detalhes-dia" class="agenda-detalhes" aria-live="polite">
+            <!-- Cuidadoras -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <button class="setor-card" type="button" data-setor="cuidadoras" data-bs-toggle="modal"
+                data-bs-target="#modalSetor">
+
+                <span class="setor-icone">
+                  <i class="fa-solid fa-hand-holding-heart"></i>
+                </span>
+
+                <span class="setor-titulo">Cuidadoras</span>
+                <span class="setor-descricao">
+                  Atenção e apoio nas rotinas diárias.
+                </span>
+
+                <span class="setor-link">
+                  Conhecer setor
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </button>
+            </div>
+
+            <!-- Enfermagem -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <button class="setor-card" type="button" data-setor="enfermagem" data-bs-toggle="modal"
+                data-bs-target="#modalSetor">
+
+                <span class="setor-icone">
+                  <i class="fa-solid fa-user-nurse"></i>
+                </span>
+
+                <span class="setor-titulo">Enfermagem</span>
+                <span class="setor-descricao">
+                  Acompanhamento e cuidados 24 horas.
+                </span>
+
+                <span class="setor-link">
+                  Conhecer setor
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </button>
+            </div>
+
+            <!-- Administração -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <button class="setor-card" type="button" data-setor="administracao" data-bs-toggle="modal"
+                data-bs-target="#modalSetor">
+
+                <span class="setor-icone">
+                  <i class="fa-solid fa-clipboard-list"></i>
+                </span>
+
+                <span class="setor-titulo">Administração</span>
+                <span class="setor-descricao">
+                  Organização e atendimento institucional.
+                </span>
+
+                <span class="setor-link">
+                  Conhecer setor
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </button>
+            </div>
+
+            <!-- Fisioterapia -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <button class="setor-card" type="button" data-setor="fisioterapia" data-bs-toggle="modal"
+                data-bs-target="#modalSetor">
+
+                <span class="setor-icone">
+                  <i class="fa-solid fa-person-walking"></i>
+                </span>
+
+                <span class="setor-titulo">Fisioterapia</span>
+                <span class="setor-descricao">
+                  Mobilidade, funcionalidade e bem-estar.
+                </span>
+
+                <span class="setor-link">
+                  Conhecer setor
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </button>
+            </div>
+
+            <!-- Lavanderia -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <button class="setor-card" type="button" data-setor="lavanderia" data-bs-toggle="modal"
+                data-bs-target="#modalSetor">
+
+                <span class="setor-icone">
+                  <i class="fa-solid fa-shirt"></i>
+                </span>
+
+                <span class="setor-titulo">Lavanderia</span>
+                <span class="setor-descricao">
+                  Cuidado e organização das roupas.
+                </span>
+
+                <span class="setor-link">
+                  Conhecer setor
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </button>
+            </div>
+
+            <!-- Limpeza -->
+            <div class="col-12 col-sm-6 col-lg-3">
+              <button class="setor-card" type="button" data-setor="limpeza" data-bs-toggle="modal"
+                data-bs-target="#modalSetor">
+
+                <span class="setor-icone">
+                  <i class="fa-solid fa-broom"></i>
+                </span>
+
+                <span class="setor-titulo">Limpeza</span>
+                <span class="setor-descricao">
+                  Higienização e conservação dos ambientes.
+                </span>
+
+                <span class="setor-link">
+                  Conhecer setor
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </span>
+              </button>
+            </div>
+
+          </div>
+
+          <div class="setores-acao">
+            <a href="#contato" class="btn">
+              Converse com nossa equipe
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Modal de informações dos setores -->
+      <div class="modal fade setor-modal" id="modalSetor" tabindex="-1" aria-labelledby="modalSetorTitulo"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <div>
+                <span class="tag">Conheça nossos cuidados</span>
+                <h2 class="modal-title" id="modalSetorTitulo"></h2>
+              </div>
+
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+
+            <div class="modal-body">
+              <p id="modalSetorDescricao"></p>
+
+              <h3>Como esse setor contribui</h3>
+
+              <ul id="modalSetorPontos" class="setor-modal-lista"></ul>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="setor-modal-fechar" data-bs-dismiss="modal">
+                Fechar
+              </button>
             </div>
 
           </div>
         </div>
+      </div>
 
-        <!-- Próximos eventos -->
-        <div class="col-12 col-lg-5">
-          <div class="proximos-box">
+      <!-- Eventos e programação -->
+      <section id="eventos" class="sec cinza">
+        <div class="container">
 
-            <h3>
-              <i class="fa-regular fa-calendar-check"></i>
-              Próximos eventos
-            </h3>
+          <div class="text-center mb-5">
+            <span class="tag">Nossa programação</span>
 
-            <div id="proximos-eventos"></div>
+            <h2>Momentos especiais para compartilhar</h2>
+
+            <p class="sub">
+              Eventos mensais, comemorações, comidas típicas
+              e atividades que tornam a convivência
+              ainda mais especial.
+            </p>
+          </div>
+
+          <div class="row g-4">
+
+            <!-- Calendário -->
+            <div class="col-12 col-lg-7">
+              <div class="agenda-box">
+
+                <!-- Identificação da agenda -->
+                <span class="agenda-selo">
+                  <i class="fa-regular fa-calendar-days"></i>
+                  Agenda do mês
+                </span>
+
+                <div class="agenda-topo">
+                  <button type="button" id="mes-anterior" aria-label="Mês anterior">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+
+                  <h3 id="mes-atual" aria-live="polite"></h3>
+
+                  <button type="button" id="mes-proximo" aria-label="Próximo mês">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                </div>
+
+                <div id="grade-calendario" class="grade-calendario">
+                </div>
+
+                <div id="detalhes-dia" class="agenda-detalhes" aria-live="polite">
+                </div>
+
+                <!-- Legenda das datas -->
+                <div class="agenda-legenda">
+                  <span>
+                    <i class="agenda-marcador agenda-marcador-hoje"></i>
+                    Hoje
+                  </span>
+
+                  <span>
+                    <i class="agenda-marcador agenda-marcador-evento"></i>
+                    Com evento
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Próximos eventos -->
+            <div class="col-12 col-lg-5">
+              <div class="proximos-box">
+
+                <h3>
+                  <i class="fa-regular fa-calendar-check"></i>
+                  Próximos eventos
+                </h3>
+
+                <div id="proximos-eventos"></div>
+
+              </div>
+            </div>
 
           </div>
         </div>
+      </section>
 
-      </div>
-    </div>
-  </section>
+      <!-- Nossos números -->
 
-  <!-- Nossos números -->
-  <section class="sec numeros">
-    <div class="container text-center">
+      <!-- Nossa comunidade -->
+      <section class="sec numeros">
+        <div class="container">
 
-      <span class="tag">Nossa comunidade</span>
+          <div class="comunidade-grid">
 
-      <h2>Mais que um residencial, uma família</h2>
+            <!-- Apresentação -->
+            <div class="comunidade-conteudo">
 
-      <p>
-        Cada residente tem sua história, suas
-        experiências e seu lugar especial.
-      </p>
+              <span class="tag">
+                <i class="fa-solid fa-heart"></i>
+                Nossa comunidade
+              </span>
 
-      <!-- Moradores: informação confirmada em 27/10/2026. Revisar antes da publicação. -->
-      <div class="numero-destaque">
-        <h3>56</h3>
-        <p>Moradores atualmente</p>
-      </div>
+              <h2>Mais que um residencial, uma família</h2>
 
-    </div>
-  </section>
+              <p class="comunidade-descricao">
+                Cada residente tem sua história, suas experiências
+                e seu lugar especial. No Canadá Residencial Sênior,
+                valorizamos o cuidado humanizado, a convivência
+                e o respeito à individualidade.
+              </p>
 
-  <!-- Contato e localização -->
-  <section id="contato" class="contato">
-    <div class="container contato-in">
+              <!-- Valores do residencial -->
+              <div class="comunidade-valores">
 
-      <div class="txt">
-        <span class="tag">Contato</span>
+                <span>
+                  <i class="fa-solid fa-heart"></i>
+                  Respeito
+                </span>
 
-        <h2>Entre em contato</h2>
+                <span>
+                  <i class="fa-solid fa-seedling"></i>
+                  Autonomia
+                </span>
 
-        <p>
-          Estamos prontos para tirar suas dúvidas e mostrar
-          como podemos fazer a diferença na vida de quem você ama.
-        </p>
+                <span>
+                  <i class="fa-solid fa-people-group"></i>
+                  Convivência
+                </span>
 
-        <ul>
-          <li data-contact="telefone" hidden>
-            <i class="fa-solid fa-phone"></i>
-            <a id="contact-phone"></a>
-          </li>
+              </div>
 
-          <li>
-            <i class="fa-solid fa-location-dot"></i>
-            <address id="contact-address">Rua Sebastião Sampaio, 854 - Centro, Sertãozinho - SP</address>
-          </li>
+            </div>
 
-          <li data-contact="email" hidden>
-            <i class="fa-regular fa-envelope"></i>
-            <a id="contact-email"></a>
-          </li>
-        </ul>
-      </div>
+            <!-- Quantidade de moradores -->
+            <!-- Confirmar número atualizado com a diretoria antes da publicação -->
+            <div class="comunidade-destaque">
 
-      <div class="mapa">
-        <div class="map-heading">
-          <span class="tag">Venha nos conhecer</span>
-          <h3>Como chegar</h3>
+              <div class="comunidade-icone">
+                <i class="fa-solid fa-house-heart"></i>
+              </div>
+
+              <span class="comunidade-label">
+                Pessoas e histórias
+              </span>
+
+              <strong class="comunidade-numero">56</strong>
+
+              <p>Moradores no último registro</p>
+
+              <div class="comunidade-detalhe">
+                <i class="fa-solid fa-heart"></i>
+                Cuidado e acolhimento em cada momento
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+      </section>
 
-        <iframe id="location-map" title="Localização do residencial na Rua Sebastião Sampaio, 854, Sertãozinho"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
-          src="https://www.google.com/maps?q=Rua%20Sebasti%C3%A3o%20Sampaio%2C%20854%2C%20Centro%2C%20Sert%C3%A3ozinho%2C%20SP&amp;z=18&amp;output=embed">
-        </iframe>
+      <!-- Contato e localização -->
+      <section id="contato" class="contato">
+        <div class="container contato-in">
 
-        <div class="map-actions">
-          <a id="map-directions" class="btn btn-sm" target="_blank" rel="noopener noreferrer"
-            href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua%20Sebasti%C3%A3o%20Sampaio%2C%20854%2C%20Sert%C3%A3ozinho%2C%20SP">
-            Como chegar ↗
+          <div class="txt">
+            <span class="tag">Contato</span>
+
+            <h2>Entre em contato</h2>
+
+            <p>
+              Estamos prontos para tirar suas dúvidas e mostrar
+              como podemos fazer a diferença na vida de quem você ama.
+            </p>
+
+            <ul>
+              <li data-contact="telefone" hidden>
+                <i class="fa-solid fa-phone"></i>
+                <a id="contact-phone"></a>
+              </li>
+
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <address id="contact-address">Rua Sebastião Sampaio, 854 - Centro, Sertãozinho - SP</address>
+              </li>
+
+              <li data-contact="email" hidden>
+                <i class="fa-regular fa-envelope"></i>
+                <a id="contact-email"></a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mapa">
+            <div class="map-heading">
+              <span class="tag">Venha nos conhecer</span>
+              <h3>Como chegar</h3>
+            </div>
+
+            <iframe id="location-map" title="Localização do residencial na Rua Sebastião Sampaio, 854, Sertãozinho"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+              src="https://www.google.com/maps?q=Rua%20Sebasti%C3%A3o%20Sampaio%2C%20854%2C%20Centro%2C%20Sert%C3%A3ozinho%2C%20SP&amp;z=18&amp;output=embed">
+            </iframe>
+
+            <div class="map-actions">
+              <a id="map-directions" class="btn btn-sm" target="_blank" rel="noopener noreferrer"
+                href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua%20Sebasti%C3%A3o%20Sampaio%2C%20854%2C%20Sert%C3%A3ozinho%2C%20SP">
+                Como chegar ↗
+              </a>
+
+              <a id="map-open" target="_blank" rel="noopener noreferrer"
+                href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Sebasti%C3%A3o%20Sampaio%2C%20854%2C%20Sert%C3%A3ozinho%2C%20SP">
+                Abrir no Google Maps ↗
+              </a>
+            </div>
+          </div>
+
+          <form class="orc" id="form">
+            <h3>Vamos conversar?</h3>
+
+            <p id="form-instructions">
+              Tire suas dúvidas, conheça nossos serviços
+              ou solicite informações para agendar uma visita.
+            </p>
+
+            <label for="nome">Seu nome</label>
+            <input id="nome" name="nome" placeholder="Como podemos chamar você?" autocomplete="name" maxlength="100"
+              required>
+
+            <label for="tel">Telefone com DDD</label>
+            <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(16) 99999-9999"
+              maxlength="22" required>
+
+            <label for="msg">Como podemos ajudar?</label>
+            <textarea id="msg" name="msg" placeholder="Conte o que você procura ou agende uma visita" maxlength="2000"
+              rows="3"></textarea>
+
+            <small>Seus dados serão incluídos apenas na mensagem que você escolher enviar.</small>
+
+            <button type="submit" class="btn-branco" id="form-submit">
+              Preparar mensagem
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <p id="form-status" role="status" aria-live="polite"></p>
+
+            <a id="form-send" class="btn-branco" hidden target="_blank" rel="noopener noreferrer">Continuar</a>
+            <textarea id="message-preview" aria-label="Mensagem preparada para copiar" readonly rows="5"
+              hidden></textarea>
+          </form>
+
+        </div>
+      </section>
+
+      <footer class="rodape">
+        <div class="container rod-in">
+          <a href="#inicio" class="logo">
+            <i class="fa-brands fa-canadian-maple-leaf"></i>
+            <span>Canadá Residencial<small>Sênior • Sertãozinho</small></span>
           </a>
 
-          <a id="map-open" target="_blank" rel="noopener noreferrer"
-            href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Sebasti%C3%A3o%20Sampaio%2C%20854%2C%20Sert%C3%A3ozinho%2C%20SP">
-            Abrir no Google Maps ↗
-          </a>
+          <!-- Navegação do rodapé -->
+          <nav aria-label="Links do rodapé">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre nós</a>
+            <a href="#servicos">Cuidados</a>
+            <a href="#rotina">Vivências</a>
+            <a href="#pet">Pets</a>
+            <a href="#beleza">Beleza</a>
+            <a href="#eventos">Eventos</a>
+            <a href="#contato">Contato</a>
+          </nav>
+
+          <div class="redes">
+            <a data-social="instagram" hidden aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a data-social="facebook" hidden aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a data-social="whatsapp" hidden aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <form class="orc" id="form">
-        <h3>Vamos conversar?</h3>
-
-        <p id="form-instructions">
-          Tire suas dúvidas, conheça nossos serviços
-          ou solicite informações para agendar uma visita.
+        <p class="copy">
+          © <span id="year">2026</span> Canadá Residencial Sênior. Todos os direitos reservados.
         </p>
+      </footer>
 
-        <label for="nome">Seu nome</label>
-        <input id="nome" name="nome" placeholder="Como podemos chamar você?" autocomplete="name" maxlength="100"
-          required>
+      <!-- JavaScript do Bootstrap -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
 
-        <label for="tel">Telefone com DDD</label>
-        <input id="tel" name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(16) 99999-9999"
-          maxlength="22" required>
-
-        <label for="msg">Como podemos ajudar?</label>
-        <textarea id="msg" name="msg" placeholder="Conte o que você procura ou agende uma visita" maxlength="2000"
-          rows="3"></textarea>
-
-        <small>Seus dados serão incluídos apenas na mensagem que você escolher enviar.</small>
-
-        <button type="submit" class="btn-branco" id="form-submit">
-          Preparar mensagem
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-
-        <p id="form-status" role="status" aria-live="polite"></p>
-
-        <a id="form-send" class="btn-branco" hidden target="_blank" rel="noopener noreferrer">Continuar</a>
-        <textarea id="message-preview" aria-label="Mensagem preparada para copiar" readonly rows="5" hidden></textarea>
-      </form>
-
-    </div>
-  </section>
-
-  <footer class="rodape">
-    <div class="container rod-in">
-      <a href="#inicio" class="logo">
-        <i class="fa-brands fa-canadian-maple-leaf"></i>
-        <span>Canadá Residencial<small>Sênior • Sertãozinho</small></span>
-      </a>
-
-      <!-- Navegação do rodapé -->
-      <nav aria-label="Links do rodapé">
-        <a href="#inicio">Início</a>
-        <a href="#sobre">Sobre nós</a>
-        <a href="#servicos">Cuidados</a>
-        <a href="#rotina">Vivências</a>
-        <a href="#pet">Pets</a>
-        <a href="#beleza">Beleza</a>
-        <a href="#eventos">Eventos</a>
-        <a href="#contato">Contato</a>
-      </nav>
-
-      <div class="redes">
-        <a data-social="instagram" hidden aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a data-social="facebook" hidden aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a data-social="whatsapp" hidden aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-      </div>
-    </div>
-
-    <p class="copy">
-      © <span id="year">2026</span> Canadá Residencial Sênior. Todos os direitos reservados.
-    </p>
-  </footer>
-
-  <!-- JavaScript do Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-    </script>
-
-  <script src="js/config.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/eventos.js"></script>
-
+      <script src="js/config.js"></script>
+      <script src="js/script.js"></script>
+      <script src="js/eventos.js"></script>
+      <script src="js/setores.js"></script>
 </body>
 
 </html>

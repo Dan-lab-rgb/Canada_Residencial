@@ -62,10 +62,14 @@ function renderizarCalendario() {
   const ano = mesExibido.getFullYear();
   const mes = mesExibido.getMonth();
 
-  tituloMes.textContent = mesExibido.toLocaleDateString(
+
+  const nomeMes = mesExibido.toLocaleDateString(
     "pt-BR",
     { month: "long", year: "numeric" }
   );
+
+  tituloMes.textContent =
+    nomeMes.charAt(0).toUpperCase() + nomeMes.slice(1);
 
   grade.replaceChildren();
   detalhes.replaceChildren();
@@ -78,6 +82,7 @@ function renderizarCalendario() {
 
   const primeiroDia = new Date(ano, mes, 1).getDay();
   const totalDias = new Date(ano, mes + 1, 0).getDate();
+  const hoje = new Date();
 
   for (let i = 0; i < primeiroDia; i++) {
     grade.appendChild(criar("span", "dia-vazio"));
@@ -92,8 +97,18 @@ function renderizarCalendario() {
 
     const lista = eventos.filter(evento => evento.data === data);
 
+    const ehHoje =
+      ano === hoje.getFullYear() &&
+      mes === hoje.getMonth() &&
+      dia === hoje.getDate();
+
     if (lista.length > 0) {
       const botao = criar("button", "dia-calendario tem-evento", String(dia));
+
+      if (ehHoje) {
+        botao.classList.add("hoje");
+        botao.setAttribute("aria-current", "date");
+      }
 
       botao.type = "button";
       const descricao = lista.length === 1 ? "evento" : "eventos";
@@ -103,7 +118,14 @@ function renderizarCalendario() {
 
       grade.appendChild(botao);
     } else {
-      grade.appendChild(criar("span", "dia-calendario", String(dia)));
+      const celula = criar("span", "dia-calendario", String(dia));
+
+      if (ehHoje) {
+        celula.classList.add("hoje");
+        celula.setAttribute("aria-current", "date");
+      }
+
+      grade.appendChild(celula);
     }
   }
 
@@ -133,13 +155,39 @@ function renderizarProximos() {
     .sort((a, b) => a.data.localeCompare(b.data))
     .slice(0, 3);
 
+
   if (lista.length === 0) {
-    proximos.appendChild(
-      criar("p", "sem-eventos",
-        "A programação será divulgada em breve.")
+    /* Estado visual sem eventos confirmados */
+    const vazio = criar("div", "agenda-vazia");
+
+    const icone = criar("i", "fa-regular fa-calendar-days");
+    icone.setAttribute("aria-hidden", "true");
+
+    vazio.appendChild(icone);
+
+    vazio.appendChild(
+      criar("h4", "", "Novas datas em breve")
     );
+
+    vazio.appendChild(
+      criar("p", "",
+        "A programação será divulgada assim que os próximos eventos forem confirmados.")
+    );
+
+    const link = criar(
+      "a",
+      "agenda-vazia-link",
+      "Tire suas dúvidas"
+    );
+
+    link.href = "#contato";
+
+    vazio.appendChild(link);
+    proximos.appendChild(vazio);
+
     return;
   }
+
 
   lista.forEach(evento => {
     const card = criar("article", "proximo-evento");
