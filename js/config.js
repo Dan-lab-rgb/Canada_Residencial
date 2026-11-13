@@ -11,7 +11,7 @@ window.SITE_CONFIG = Object.freeze({
 
   // Contatos
   telefone: '(16) 99229-6500',
-  whatsapp: '',
+  whatsapp: '5516992296500',
   email: 'contato@grupocanadasaude.com.br',
 
   // Redes sociais

@@ -506,51 +506,182 @@ $$('[data-social]').forEach(a => {
   }
 });
 
-/* Não informa envio sem envio real. Nenhum dado é descartado após preparar. */
+/* Agendamento de visitas pelo WhatsApp */
+const mensagemVisita =
+  `Olá! Gostaria de obter informações para agendar uma visita ao ${config.nome}, em Sertãozinho.`;
+
+$$('[data-agendar="whatsapp"]').forEach(link => {
+  if (!whatsapp) return;
+
+  link.href = `https://wa.me/${whatsapp}?text=${encodeURIComponent(mensagemVisita)}`;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+});
+
+/* =====  ENVIO DO FORMULÁRIO PELO FORMSPREE ===== */
+
 const form = $('#form');
+const botaoEnviar = $('#form-submit');
+const statusEnvio = $('#form-status');
+const conteudoOriginalBotao = botaoEnviar.innerHTML;
 
-$('#form-submit').firstChild.textContent = whatsapp
-  ? 'Preparar WhatsApp '
-  : emailValido ? 'Preparar e-mail ' : 'Preparar mensagem ';
+/* Atualiza a mensagem e o estado visual do envio */
+function mostrarStatus(mensagem, tipo = '') {
+  statusEnvio.textContent = mensagem;
 
-form.addEventListener('submit', e => {
+  statusEnvio.classList.remove(
+    'status-enviando',
+    'status-sucesso',
+    'status-erro'
+  );
+
+  if (tipo) {
+    statusEnvio.classList.add(`status-${tipo}`);
+  }
+}
+
+/* Exibe ou remove os avisos de validação */
+function mostrarErro(campo, mensagem) {
+  const aviso = $(`#erro-${campo.id}`);
+
+  aviso.textContent = mensagem;
+  aviso.hidden = !mensagem;
+
+  campo.classList.toggle('campo-invalido', Boolean(mensagem));
+
+  if (mensagem) {
+    campo.setAttribute('aria-invalid', 'true');
+  } else {
+    campo.removeAttribute('aria-invalid');
+  }
+}
+
+/* Verifica os dados antes do envio */
+function validarFormulario() {
+  const nome = form.elements.nome;
+  const telefone = form.elements.tel;
+  const mensagem = form.elements.msg;
+
+  const numeros = telefone.value.replace(/\D/g, '');
+
+  const regras = [
+    {
+      campo: nome,
+      erro: !nome.value.trim()
+        ? 'Por favor, informe seu nome.'
+        : nome.value.trim().length < 2
+          ? 'O nome precisa ter pelo menos 2 caracteres.'
+          : ''
+    },
+    {
+      campo: telefone,
+      erro: !telefone.value.trim()
+        ? 'Por favor, informe seu telefone.'
+        : !/^(?:55)?\d{10,11}$/.test(numeros)
+          ? 'Informe um telefone válido com DDD.'
+          : ''
+    },
+    {
+      campo: mensagem,
+      erro: !mensagem.value.trim()
+        ? 'Por favor, escreva sua mensagem.'
+        : ''
+    }
+  ];
+
+  let primeiroErro = null;
+
+  regras.forEach(({ campo, erro }) => {
+    mostrarErro(campo, erro);
+
+    if (erro && !primeiroErro) {
+      primeiroErro = campo;
+    }
+  });
+
+  if (primeiroErro) {
+    primeiroErro.focus();
+    return false;
+  }
+
+  return true;
+}
+
+/* Envio real das informações */
+form.addEventListener('submit', async e => {
   e.preventDefault();
 
   const nome = form.elements.nome;
   const telefone = form.elements.tel;
 
-  nome.setCustomValidity(nome.value.trim().length >= 2 ? '' : 'Informe seu nome.');
-  telefone.setCustomValidity(/^(?:55)?\d{10,11}$/.test(telefone.value.replace(/\D/g, ''))
-    ? ''
-    : 'Informe um telefone com DDD, com 10 ou 11 dígitos.');
+  /* Validação dos campos */
+  if (!validarFormulario()) return;
 
-  if (!form.reportValidity()) return;
+  /* Organiza os dados para o envio */
+  const dados = new FormData(form);
 
-  const texto = `Olá! Gostaria de informações sobre o ${config.nome}.\nNome: ${nome.value.trim()}\nTelefone: ${telefone.value.trim()}\n${form.elements.msg.value.trim()}`;
-  const enviar = $('#form-send');
-  const preview = $('#message-preview');
+  dados.set('nome', nome.value.trim());
+  dados.set('tel', telefone.value.trim());
+  dados.set('msg', form.elements.msg.value.trim());
 
-  preview.value = texto;
-  preview.hidden = false;
+  /* Desativa o botão durante o envio */
+  botaoEnviar.disabled = true;
+  botaoEnviar.textContent = 'Enviando...';
 
-  if (whatsapp || emailValido) {
-    enviar.href = whatsapp
-      ? `https://wa.me/${whatsapp}?text=${encodeURIComponent(texto)}`
-      : `mailto:${config.email}?subject=${encodeURIComponent('Informações e visita ao residencial')}&body=${encodeURIComponent(texto)}`;
+  mostrarStatus('Enviando sua mensagem...', 'enviando');
 
-    enviar.textContent = whatsapp ? 'Continuar no WhatsApp ↗' : 'Abrir aplicativo de e-mail ↗';
-    enviar.hidden = false;
-    $('#form-status').textContent = 'Mensagem preparada. Continue pelo botão abaixo e confirme o envio no aplicativo.';
-  } else {
-    enviar.hidden = true;
-    $('#form-status').textContent = 'O canal de contato ainda não está disponível. Você pode copiar a mensagem abaixo. Nenhuma mensagem foi enviada.';
+  try {
+    /* Envia os dados ao Formspree */
+    const resposta = await fetch(form.action, {
+      method: 'POST',
+      body: dados,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (resposta.ok) {
+      /* Formspree confirmou o recebimento */
+      mostrarStatus(
+        'Mensagem enviada com sucesso! Entraremos em contato em breve.',
+        'sucesso'
+      );
+
+      form.reset();
+
+    } else if (resposta.status === 429) {
+      mostrarStatus(
+        'Muitas tentativas de envio. Aguarde e tente novamente.',
+        'erro'
+      );
+
+    } else {
+      mostrarStatus(
+        'Não foi possível enviar a mensagem. Tente novamente.',
+        'erro'
+      );
+    }
+
+  } catch (erro) {
+    /* Problema de conexão */
+    mostrarStatus(
+      'Erro de conexão. Verifique sua internet e tente novamente.',
+      'erro'
+    );
+
+  } finally {
+    /* Restaura o botão */
+    botaoEnviar.disabled = false;
+    botaoEnviar.innerHTML = conteudoOriginalBotao;
   }
 });
 
-$$('input', form).forEach(input => input.addEventListener('input', () => input.setCustomValidity('')));
+/* Remove avisos ao corrigir os campos */
+form.addEventListener('input', e => {
+  if (e.target.matches('input, textarea')) {
+    mostrarErro(e.target, '');
+  }
 
-form.addEventListener('input', () => {
-  $('#form-send').hidden = true;
-  $('#message-preview').hidden = true;
-  $('#form-status').textContent = '';
+  mostrarStatus('');
 });
+

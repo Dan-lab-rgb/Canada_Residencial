@@ -241,3 +241,184 @@ textarea:focus-visible {
     font-size: 1.4rem;
   }
 }
+
+/* ===== V3 - WHATSAPP ===== */
+
+.whatsapp-flutuante {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1030;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 56px;
+  padding: 14px 20px;
+
+  border-radius: 50px;
+  background: #25d366;
+  color: white;
+
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.whatsapp-flutuante[hidden] {
+  display: none;
+}
+
+.whatsapp-flutuante i {
+  font-size: 1.5rem;
+}
+
+.whatsapp-flutuante:hover {
+  transform: translateY(-4px);
+  color: white;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .whatsapp-flutuante {
+    right: 16px;
+    bottom: 16px;
+
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  .whatsapp-flutuante span {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-flutuante {
+    transition: none;
+  }
+
+  .whatsapp-flutuante:hover {
+    transform: none;
+  }
+}
+
+/* =====  ESTADO DO FORMULÁRIO ATUALIZADO ===== */
+
+.contato .orc button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+/* ===== V3 - PROTEÇÃO DO FORMULÁRIO ===== */
+
+.campo-antispam {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===== V3 - VALIDAÇÃO DO FORMULÁRIO ===== */
+
+.contato .orc .campo-erro {
+  display: block;
+  margin-top: 4px;
+  padding: 9px 12px;
+
+  border-left: 3px solid #ffd7da;
+  border-radius: 7px;
+
+  background: rgba(70, 0, 10, 0.25);
+  color: #fff;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.contato .orc .campo-erro[hidden] {
+  display: none;
+}
+
+.contato .orc .campo-invalido {
+  border-color: #ffd7da;
+  box-shadow: 0 0 0 2px rgba(255, 215, 218, 0.6);
+}
+
+
+/* ===== MENSAGENS DE ENVIO DO FORMULÁRIO ===== */
+
+/* Aparência geral das mensagens */
+.contato .orc #form-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin: 18px 0 0;
+  padding: 14px 18px;
+
+  border: 1px solid transparent;
+  border-radius: 12px;
+
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* Esconde a mensagem quando está vazia */
+.contato .orc #form-status:empty {
+  display: none;
+}
+
+/* Mensagem durante o envio */
+.contato .orc #form-status.status-enviando {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* Mensagem de sucesso */
+.contato .orc #form-status.status-sucesso {
+  background: #e8f7ed;
+  border-color: #a8dfb8;
+  color: #176b36;
+}
+
+/* Mensagem de erro */
+.contato .orc #form-status.status-erro {
+  background: #fff0ee;
+  border-color: #efc0bd;
+  color: #9b2020;
+}
+
+/* Ícones das mensagens */
+.contato .orc #form-status::before {
+  flex-shrink: 0;
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.contato .orc #form-status.status-enviando::before {
+  content: '…';
+}
+
+.contato .orc #form-status.status-sucesso::before {
+  content: '✓';
+}
+
+.contato .orc #form-status.status-erro::before {
+  content: '!';
+}
