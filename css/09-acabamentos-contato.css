@@ -422,3 +422,44 @@ textarea:focus-visible {
 .contato .orc #form-status.status-erro::before {
   content: '!';
 }
+
+/* =====  WHATSAPP FLUTUANTE MELHORADO ===== */
+
+/* Computador: botão compacto */
+@media (min-width: 769px) {
+  .whatsapp-flutuante {
+    right: 18px;
+    bottom: 18px;
+
+    width: 50px;
+    height: 50px;
+    min-height: 0;
+    padding: 0;
+    gap: 0;
+
+    border-radius: 50%;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+  }
+
+  /* Mantém somente o ícone */
+  .whatsapp-flutuante span {
+    display: none;
+  }
+
+  .whatsapp-flutuante i {
+    font-size: 1.6rem;
+  }
+}
+
+/* Celular e tablet: sem botão sobre o conteúdo */
+@media (max-width: 768px) {
+  .whatsapp-flutuante {
+    display: none;
+  }
+}
+
+/* Destaque ao navegar pelo teclado */
+.whatsapp-flutuante:focus-visible {
+  outline: 3px solid #14532d;
+  outline-offset: 4px;
+}
